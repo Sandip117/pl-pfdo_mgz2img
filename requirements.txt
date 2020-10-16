@@ -1,1 +1,5 @@
 chrisapp~=1.1.6
+pftree
+pfdo
+pfmisc
+pfdo_mgz2image

@@ -34,5 +34,7 @@ WORKDIR $APPROOT
 
 RUN pip install --upgrade pip
 RUN pip install -r requirements.txt
+RUN pip install -U mgz2imgslices
+RUN pip install -U pfdo_mgz2image
 
 CMD ["pfdo_mgz2img.py", "--help"]

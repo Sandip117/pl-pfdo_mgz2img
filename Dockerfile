@@ -21,20 +21,12 @@
 #   docker run -ti -e HOST_IP=$(ip route | grep -v docker | awk '{if(NF==11) print $9}') --entrypoint /bin/bash local/pl-pfdo_mgz2img
 #
 
-
-
 FROM fnndsc/ubuntu-python3:latest
 MAINTAINER fnndsc "dev@babymri.org"
 
-ENV APPROOT="/usr/src/pfdo_mgz2img"
-COPY ["pfdo_mgz2img", "${APPROOT}"]
-COPY ["requirements.txt", "${APPROOT}"]
+WORKDIR /usr/local/src
+COPY . .
 
-WORKDIR $APPROOT
+RUN pip --disable-pip-version-check install -r requirements.txt && pip install .
 
-RUN pip install --upgrade pip
-RUN pip install -r requirements.txt
-RUN pip install -U mgz2imgslices
-RUN pip install -U pfdo_mgz2image
-
-CMD ["pfdo_mgz2img.py", "--help"]
+CMD ["/usr/local/bin/pfdo_mgz2img", "--help"]

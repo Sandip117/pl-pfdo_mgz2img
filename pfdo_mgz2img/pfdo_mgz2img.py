@@ -13,6 +13,7 @@
 import os
 import sys
 import importlib.metadata
+import pudb
 
 # Turn off all logging for modules in this libary.
 import logging
@@ -276,12 +277,12 @@ class Pfdo_mgz2img(ChrisApp):
                             type    = str,
                             optional= True,
                             default = '')
-        self.add_argument("-O", "--outputDir",
-                            help    = "output image directory",
-                            dest    = 'outputDir',
-                            type    = str,
-                            optional= False,
-                            default = '')
+        # self.add_argument("-O", "--outputDir",
+        #                     help    = "output image directory",
+        #                     dest    = 'outputDir',
+        #                     type    = str,
+        #                     optional= False,
+        #                     default = '')
         self.add_argument("--printElapsedTime",
                             help    = "print program run time",
                             dest    = 'printElapsedTime',
@@ -396,6 +397,7 @@ class Pfdo_mgz2img(ChrisApp):
         print(Gstr_title)
         print('Version: %s' % self.get_version())
 
+        # pudb.set_trace()
         if options.man or options.synopsis:
             self.show_man_page()
 
@@ -405,7 +407,7 @@ class Pfdo_mgz2img(ChrisApp):
         pfdo_shell = pfdo_mgz2image(vars(options))
 
         d_pfdo_shell = pfdo_shell.run(timerStart = True)
-        print(pfdo_shell)
+        # print(pfdo_shell)
 
         if options.printElapsedTime:
             pfdo_shell.dp.qprint(

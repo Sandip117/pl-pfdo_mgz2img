@@ -29,4 +29,5 @@ COPY . .
 
 RUN pip --disable-pip-version-check install -r requirements.txt && pip install .
 
+WORKDIR /usr/local/bin
 CMD ["/usr/local/bin/pfdo_mgz2img", "--help"]

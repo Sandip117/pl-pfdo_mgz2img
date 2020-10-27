@@ -55,6 +55,7 @@ Gstr_synopsis = """
             [--label <prefixForLabelDirectories>]                       \\
             [-n|--normalize]                                            \\
             [-l|--lookupTable <LUTfile>]                                \\
+            [--skipAllLabels]                                           \\
             [-s|--skipLabelValueList <ListOfVoxelValuesToSkip>]         \\
             [-f|--filterLabelValueList <ListOfVoxelValuesToInclude>]    \\
             [-w|--wholeVolume <wholeVolDirName>]                        \\
@@ -167,6 +168,9 @@ Gstr_synopsis = """
         the FreeSurferColorLUT.txt from within the docker container to perform a 
         looktup on the filtered voxel label values according to the contents of 
         the FreeSurferColorLUT.txt
+
+        [--skipAllLabels]
+        Skips all labels and converts only the whole mgz volume to png/jpg images.
 
         [-s|--skipLabelValueList <ListOfLabelNumbersToSkip>]
         If specified as a comma separated string of label numbers,
@@ -371,6 +375,11 @@ class Pfdo_mgz2img(ChrisApp):
                             type    = str,
                             optional= True,
                             default = '__val__')
+        self.add_argument('--skipAllLabels', 
+                          dest='skipAllLabels',
+                          type=bool, action='store_true',
+                          default=False, optional=True, 
+                          help='skip all labels and create only whole Volume images')
         self.add_argument('-s', '--skipLabelValueList',
                             help='Comma separated list of voxel values to skip',
                             dest='skipLabelValueList',

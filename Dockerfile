@@ -26,8 +26,9 @@ MAINTAINER fnndsc "dev@babymri.org"
 
 WORKDIR /usr/local/src
 COPY . .
+COPY ["FreeSurferColorLUT.txt", "/usr/src/"]
 
-RUN pip --disable-pip-version-check install -r requirements.txt && pip install .
+RUN pip --disable-pip-version-check install -U -r requirements.txt && pip install .
 
 WORKDIR /usr/local/bin
 CMD ["/usr/local/bin/pfdo_mgz2img", "--help"]

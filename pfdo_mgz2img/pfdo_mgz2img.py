@@ -334,6 +334,13 @@ class Pfdo_mgz2img(ChrisApp):
                             type    = bool,
                             optional= True,
                             default = False)
+        self.add_argument("--verbosity",
+                            help    = "verbosity level for app",
+                            dest    = 'verbosity',
+                            type    = str,
+                            optional= True,
+                            default = "1")
+                            
                             
         # mgz2image additional CLI flags
 
@@ -398,6 +405,7 @@ class Pfdo_mgz2img(ChrisApp):
                             type    = str,
                             optional= True,
                             default = 'wholeVolume')
+        
 
     def run(self, options):
         """

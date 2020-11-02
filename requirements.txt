@@ -4,3 +4,4 @@ pfdo
 pfmisc
 scikit-image
 pfdo_mgz2image
+mgz2imgslices

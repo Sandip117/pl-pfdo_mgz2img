@@ -268,7 +268,7 @@ class Pfdo_mgz2img(ChrisApp):
         Define the CLI arguments accepted by this plugin app.
         Use self.add_argument to specify a new app argument.
         """
-
+        super().define_parameters()
         self.add_argument("-i", "--inputFile",
                             help    = "input file",
                             dest    = 'inputFile',
@@ -281,12 +281,6 @@ class Pfdo_mgz2img(ChrisApp):
                             type    = str,
                             optional= True,
                             default = '')
-        # self.add_argument("-O", "--outputDir",
-        #                     help    = "output image directory",
-        #                     dest    = 'outputDir',
-        #                     type    = str,
-        #                     optional= False,
-        #                     default = '')
         self.add_argument("--printElapsedTime",
                             help    = "print program run time",
                             dest    = 'printElapsedTime',
@@ -334,12 +328,12 @@ class Pfdo_mgz2img(ChrisApp):
                             type    = bool,
                             optional= True,
                             default = False)
-        self.add_argument("--verbosity",
-                            help    = "verbosity level for app",
-                            dest    = 'verbosity',
-                            type    = str,
-                            optional= True,
-                            default = "1")
+        # self.add_argument("--verbosity",
+        #                     help    = "verbosity level for app",
+        #                     dest    = 'verbosity',
+        #                     type    = str,
+        #                     optional= True,
+        #                     default = "1")
                             
                             
         # mgz2image additional CLI flags
@@ -383,10 +377,10 @@ class Pfdo_mgz2img(ChrisApp):
                             optional= True,
                             default = '__val__')
         self.add_argument('--skipAllLabels', 
-                          dest='skipAllLabels',
-                          type=bool, action='store_true',
-                          default=False, optional=True, 
-                          help='skip all labels and create only whole Volume images')
+                            dest='skipAllLabels',
+                            type=bool, action='store_true',
+                            default=False, optional=True, 
+                            help='skip all labels and create only whole Volume images')
         self.add_argument('-s', '--skipLabelValueList',
                             help='Comma separated list of voxel values to skip',
                             dest='skipLabelValueList',

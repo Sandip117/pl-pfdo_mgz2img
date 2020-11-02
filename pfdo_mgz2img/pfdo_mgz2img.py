@@ -268,7 +268,7 @@ class Pfdo_mgz2img(ChrisApp):
         Define the CLI arguments accepted by this plugin app.
         Use self.add_argument to specify a new app argument.
         """
-        super().define_parameters()
+        
         self.add_argument("-i", "--inputFile",
                             help    = "input file",
                             dest    = 'inputFile',

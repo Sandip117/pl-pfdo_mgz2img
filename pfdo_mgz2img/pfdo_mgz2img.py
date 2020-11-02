@@ -112,6 +112,17 @@ Gstr_synopsis = """
         An optional string to filter the files of interest from the
         <inputDir> tree.
 
+        [--analyzeFileIndex <someIndex>]
+        An optional string to control which file(s) in a specific directory
+        to which the analysis is applied. The default is "-1" which implies
+        *ALL* files in a given directory. Other valid <someIndex> are:
+            'm':   only the "middle" file in the returned file list
+            "f":   only the first file in the returned file list
+            "l":   only the last file in the returned file list
+            "<N>": the file at index N in the file list. If this index
+                   is out of bounds, no analysis is performed.
+            "-1" means all files.
+
         [--outputLeafDir <outputLeafDirFormat>]
         If specified, will apply the <outputLeafDirFormat> to the output
         directories containing data. This is useful to blanket describe
@@ -281,6 +292,12 @@ class Pfdo_mgz2img(ChrisApp):
                             type    = str,
                             optional= True,
                             default = '')
+        self.add_argument("--analyzeFileIndex", 
+                            help="file index per directory to analyze", 
+                            type=str,
+                            dest='analyzeFileIndex', 
+                            optional=False, 
+                            default="-1")
         self.add_argument("--printElapsedTime",
                             help    = "print program run time",
                             dest    = 'printElapsedTime',

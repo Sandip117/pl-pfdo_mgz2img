@@ -35,7 +35,7 @@ Synopsis
 Description
 -----------
 
-``pfdo_mgz2img.py`` is a ChRIS-based application that...
+``pfdo_mgz2img.py`` is a ChRIS-based application that converts multiple mgz files to images.
 
 Arguments
 ---------

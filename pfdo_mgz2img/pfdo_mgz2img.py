@@ -345,12 +345,12 @@ class Pfdo_mgz2img(ChrisApp):
                             type    = bool,
                             optional= True,
                             default = False)
-        # self.add_argument("--verbosity",
-        #                     help    = "verbosity level for app",
-        #                     dest    = 'verbosity',
-        #                     type    = str,
-        #                     optional= True,
-        #                     default = "1")
+        self.add_argument("--verbose",
+                            type        = str,
+                            optional    = True,
+                            help        = "verbosity level for app",
+                            dest        = 'verbose',
+                            default     = "1")
                             
                             
         # mgz2image additional CLI flags
@@ -431,6 +431,7 @@ class Pfdo_mgz2img(ChrisApp):
 
         options.inputDir = options.inputdir
         options.outputDir = options.outputdir
+        options.verbosity = options.verbose
 
         pfdo_shell = pfdo_mgz2image(vars(options))
 

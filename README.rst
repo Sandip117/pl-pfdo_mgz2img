@@ -35,7 +35,7 @@ Synopsis
 Description
 -----------
 
-``pfdo_mgz2img.py`` is a ChRIS-based application that converts multiple mgz files to images.
+``pfdo_mgz2img.py`` is a ChRIS-based application that converts multiple mgz files to images from an input directory tree by recreating the entire tree in the outputdir and storing the resultant images in the corresponding subject dir.
 
 Arguments
 ---------

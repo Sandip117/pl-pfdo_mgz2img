@@ -296,7 +296,7 @@ class Pfdo_mgz2img(ChrisApp):
                             help="file index per directory to analyze", 
                             type=str,
                             dest='analyzeFileIndex', 
-                            optional=False, 
+                            optional=True, 
                             default="-1")
         self.add_argument("--printElapsedTime",
                             help    = "print program run time",

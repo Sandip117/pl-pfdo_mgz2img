@@ -221,7 +221,7 @@ Gstr_synopsis = """
         [--followLinks]
         If specified, follow symbolic links.
 
-        -v|--verbosity <level>
+        -v|--verbose <level>
         Set the app verbosity level.
 
             0: No internal output;

@@ -416,9 +416,57 @@ class Pfdo_mgz2img(ChrisApp):
                             type    = str,
                             optional= True,
                             default = 'wholeVolume')
+                            
+        self.add_argument("-a", "--args",
+                            help='Pass arguements for individual mgz',
+                            dest='args',
+                            type    = str,
+                            optional= True,
+                            default = "")
+                            
+                            
+                            
+    def run(self, options):
+        """
+        Define the code to be run by this plugin app.
+        """
+        print(Gstr_title)
+        print('Version: %s' % self.get_version())
+
+        # pudb.set_trace()
+        if options.man or options.synopsis:
+            self.show_man_page()
+            
+        # get the list of mgz mentioned in filtered expressions
+        mgz_list=options.filter.split(',')
+        
+        mgz_count = len(mgz_list)
+        
+        count=0
+        if mgz_count>1:
+            # parse arguements passed
+            arg_list = options.args.split('|')
+            
+            for mgz in mgz_list:
+                options.filter=mgz
+                
+                # get parameters from arg_list
+                if arg_list[count] is not None:
+                    print(arg_list[count])
+                    val = arg_list[count]
+                    options.val=True
+                
+                
+                self.run_individual_filter(options)
+                count = count+1
+        else:
+            self.run_individual_filter(options)
+        
+        sys.exit(0)    
+        
         
 
-    def run(self, options):
+    def run_individual_filter(self, options):
         """
         Define the code to be run by this plugin app.
         """
@@ -444,7 +492,7 @@ class Pfdo_mgz2img(ChrisApp):
                     d_pfdo_shell['runTime']
             )
 
-        sys.exit(0)
+        
 
     def show_man_page(self):
         """
